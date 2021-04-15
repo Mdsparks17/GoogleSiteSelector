@@ -1,0 +1,72 @@
+/* rgb(252, 68, 132) */
+#sidebar {
+    float:left;
+    height: 100vh;
+    margin: 0px;
+    background-color: whitesmoke;
+    width: 400px;
+    z-index:5;
+    position: absolute;
+}
+
+#bottom-sidebar {
+    height:200px;
+    width:400px;
+    z-index:12;
+    position: absolute;
+    /* background-color: grey; */
+    bottom: 0;
+}
+
+#map {
+    overflow: hidden;
+}
+
+#networkSelector {
+    height: 20px;
+    width: 100px
+}
+
+#optionToggle {
+    width: 125px;
+}
+
+agm-map {
+    height: 100vh;
+    position: relative;
+}
+
+hr {
+    margin: 0;
+    width: 375px;
+}
+
+h4 {
+    margin: 0;
+}
+
+.legend {
+    margin-left: 400px;
+    z-index:10;
+    position: absolute;
+    opacity: 0.5;
+}
+
+.dropdownWrapper {
+    height: 30px;
+    width: 370px;
+}
+
+.main {
+    margin: 10px;
+}
+
+.button {
+    height: 20px;
+    width: 70px;
+}
+
+/*  */
+.custom-class {
+    color:rgb(252, 68, 132);
+}
