@@ -21,8 +21,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'get your own api key'
+      apiKey: 'AIzaSyCj9Y0aFN5j8mAGmBw6aVxR0pjasMZgDGw'
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,

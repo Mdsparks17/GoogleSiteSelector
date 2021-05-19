@@ -1,10 +1,7 @@
 import { Component, ComponentFactoryResolver, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { HostListener } from '@angular/core';
-
-
+import { saveAs } from 'file-saver';
 import * as sites from '../cache/markers.json'
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +10,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 
 export class AppComponent implements OnInit{
+  url = "";
+  csvContent = "";
+
+  test;
   globalListenFunc: Function;
   temp;
   north = 0;
@@ -140,6 +141,11 @@ export class AppComponent implements OnInit{
     }
     console.log("MarkerList:");
     console.log(this.markers);
+
+    this.csvContent = "";
+    for (let i = 0; i < this.markers.length; i++) {
+      this.csvContent += this.markers[i].stat_id + "\n";
+    }
   }
   
   //##################################################
@@ -294,19 +300,6 @@ export class AppComponent implements OnInit{
     } else {
       this.west = event.coords.lng;
     }
-  
-
-    // this.north = event.coords.lat;
-    // this.east = event.coords.lng;
-
-    // this.north = event.coords.lat;
-    // if (event.coords.lng < this.staticLNG) {
-    //   this.east = this.staticLNG;
-    //   this.west = event.coords.lng
-    // } else {
-    //   this.west = this.staticLNG;
-    //   this.east = event.coords.lng;
-    // }
   }
 
   dragEnd(event) {
@@ -337,6 +330,7 @@ export class AppComponent implements OnInit{
       this.shift = true;
     }
   }
+
   @HostListener('document:keyup', ['$event'])
   handleKeyboardUp(event: KeyboardEvent) { 
     
@@ -492,23 +486,13 @@ export class AppComponent implements OnInit{
     console.log(this.markers);
   }
 
+  exportMarkers() {
+    let file = new Blob([this.csvContent], { type: 'text/csv;charset=utf-8' });
+    saveAs(file, 'helloworld.csv');
+  }
+
   loadCSV(newCSV: string) {
-    // this.sites = newCSV;
 
-    // this.markers = [];
-
-    // let rows = newCSV.split("\n");
-    // var i;
-    // for (i = 0; i < rows.length; i++) {
-    //   let column = rows[i].split(",");
-    //   let location = {
-    //     "name": column[0], 
-    //     "latitude": Number(column[9]),
-    //     "longitude": Number(column[10]),
-    //   }
-    //   this.markers.push(location);
-    // }
-    // console.log(this.markers);
   }
 }
 
